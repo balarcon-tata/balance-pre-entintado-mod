@@ -8768,7 +8768,7 @@ procesarPrograma = function(workbook) {
     if (!rec.cantOrden && cantOrden) rec.cantOrden = cantOrden;
     rec.totalPlanificado = rec.unidades; // total programado de esa orden en la semana
   }
-  const registros = [...mapa.values()].sort((a,b)=>a.semana-b.semana || String(a.linea).localeCompare(String(b.linea)) || String(a.orden).localeCompare(String(b.orden)));
+  const registros = [...mapa.values()].sort((a,b)=>MOD8_SEMANAS.indexOf(a.semana) - MOD8_SEMANAS.indexOf(b.semana) || String(a.linea).localeCompare(String(b.linea)) || String(a.orden).localeCompare(String(b.orden)));
   console.log(`MASTER PLAN MOD: Group=Cantos/Cantos CC ${filasPreEntintado} filas | semanas ${MOD8_SEMANA_INICIO}-${MOD8_SEMANA_FIN}: ${registros.length} registros | fuera rango ${fueraSemana} | sin fecha ${sinFecha}`);
   return registros;
 };
